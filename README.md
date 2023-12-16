@@ -15,7 +15,7 @@ Data Science jobs salary prediction based on Glassdoor data
     1. Parse JD for keywords
 
 # Salary Parse
-Removed '-1' values in Salary Estimate
+Removed '-1' values in Salary Estimate \n
 Removed 'glassdoor estimates'
 Removed k and '$' sign in salaries
 Added a column for 'per hour' and 'employer provided salary' with 1 if true or 0 if false
