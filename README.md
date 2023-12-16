@@ -23,7 +23,7 @@ Removed 'per hour' and 'employer provided salary'
 Split min and max salary into two columns
 
 # Company Name 
-  #### Has company name and rating together (could have done straight split by using delimiter as '\n'
+  ### Has company name and rating together (could have done straight split by using delimiter as '\n'
 Replaced '\n' with , 
 Split company name and rating taking only company name and put it into column company txt
 
