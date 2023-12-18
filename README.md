@@ -55,5 +55,12 @@ Keywords to search for: (convert everything to lower case before searching)
   16. cloud or google cloud
   17. linux
 
+# Job Title
+# Seniority
+# JD Length
+# Competitor Count
+# Per hour wage to annual wage
+# Remove new line from job title
+
 
     
