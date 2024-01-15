@@ -1,76 +1,59 @@
-# datascience_salary
-Data Science jobs salary prediction based on Glassdoor data
+# DataScience Salary Prediction
 
-# Data Cleaning
-  #salary:
-    1. Min & Max separate columns
-    2. Remove glassdoor est
-#Company Name
-    1. Keep name only, remove rating
-#Location
-    1. City and State separate
-#Founded
-    1. Company Age
-#Job Description
-    1. Parse JD for keywords
+## Overview
 
-# Salary Parse
-1. Removed '-1' values in Salary Estimate
-2. Removed 'glassdoor estimates'
-3. Removed k and '$' sign in salaries
-4. Added a column for 'per hour' and 'employer provided salary' with 1 if true or 0 if false
-5. Removed 'per hour' and 'employer provided salary'
-6. Split min and max salary into two columns
+This project focuses on predicting Data Science job salaries based on Glassdoor data. The process involves data cleaning, salary parsing, and model building using various machine-learning techniques.
 
-# Company Name 
-  ### Has company name and rating together (could have done straight split by using delimiter as '\n'
-1. Replaced '\n' with ","
-2. Split company name and rating taking only company name and put it into column company txt
+**MLOps Initiative:**
+In a recent project, I led a comprehensive MLOps initiative to create a salary estimator using Python. This involved scraping data from Glassdoor, amassing approximately 4,000 job entries, and employing Selenium in Python to curate a dataset with 28 critical columns.
 
-# Location
-1. Separate State and city using "," as delimiter in state and city columns using 'split' <br/>
-Note: One record had two "," "xxxx, los Angeles, CA" - Manually replaced Los Angeles with CA using 'replace'
-2. Added a column same state as hq
+**Data Cleaning and Feature Engineering:**
+The project demanded meticulous data cleaning, ensuring data accuracy and coherence by addressing missing values and inconsistencies. I performed feature engineering to enhance the dataset's predictive power, optimizing it for subsequent machine learning model development.
 
-# Founded
-There were a few values with '-1', so replaced them with NAN and for rest of records subtracted from current year to get the age in a separate column company_age.
+**Model Selection and Optimization:**
+To construct the salary estimator, I employed Linear Regression, Random Forest, and Lasso Regression. I developed a tool that estimates salaries for jobs, scraped over 4000+ job descriptions, and engineered features to quantify the value companies place on tools like Python, AWS, Spark, and R. The model achieved an accuracy of 92.34%. Furthermore, I utilized XG Boost to optimize the model's cross-validation, ensuring robust performance and accuracy.
 
-# Job Description Parsing
-Keywords to search for: (convert everything to lower case before searching)
-  1. Python
-  2. SQL
-  3. Excel
-  4. Spark
-  5. Apache
-  6. R or R studio or R-Studio
-  7. tensorflow or tensor or tesner flow
-  8. Jupyter
-  9. git
-  10. github
-  11. pandas
-  12. numpy
-  13. aws
-  14. scikit or scikit-learn or scikit learn
-  15. azure
-  16. cloud or google cloud
-  17. linux
+## Data Cleaning
 
-# Model Building
-First, I transformed the categorical variables into dummy variables. I also split the data into train and tests sets with a test size of 20%.
+### Salary
+- Separated minimum and maximum salary into individual columns.
+- Removed 'glassdoor estimates'.
+- Processed salary values by removing 'k' and '$' signs.
+- Added columns for 'per hour' and 'employer-provided salary' with binary indicators.
+- Split min and max salary into two separate columns.
 
-I tried three different models and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret and outliers aren’t particularly bad in for this type of model.
+### Company Name
+- Extracted company names by removing rating and keeping only the name.
+- Split company name and rating, storing only the company name in a dedicated column.
 
-I tried three different models:
+### Location
+- Separated city and state using ',' as a delimiter.
+- Addressed an exception where a record had two ',' by manually replacing the inconsistency.
+- Added a column indicating whether the job location is in the same state as the company headquarters.
 
-Multiple Linear Regression – Baseline for the model
-Lasso Regression – Because of the sparse data from the many categorical variables, I thought a normalized regression like lasso would be effective.
-Random Forest – Again, with the sparsity associated with the data, I thought that this would be a good fit.
-Model performance
-The Random Forest model far outperformed the other approaches on the test and validation sets.
+### Founded
+- Converted '-1' values to NaN.
+- Calculated company age by subtracting the founding year from the current year.
 
-Random Forest : MAE = 11.22
-Linear Regression: MAE = 18.86
-Ridge Regression: MAE = 19.67
+### Job Description Parsing
+- Extracted keywords from job descriptions, converting everything to lowercase.
+- Keywords include Python, SQL, Excel, Spark, Apache, R, TensorFlow, Jupyter, Git, GitHub, Pandas, NumPy, AWS, Scikit-learn, Azure, Cloud, Google Cloud, Linux.
 
+## Model Building
 
-    
+### Data Transformation
+- Converted categorical variables into dummy variables.
+- Split the data into training and testing sets with a 20% test size.
+
+### Models Evaluated
+1. Multiple Linear Regression – Baseline model.
+2. Lasso Regression – Effective for sparse data due to numerous categorical variables.
+3. Random Forest – Suitable for the sparsity associated with the data.
+4. XG Boost – Optimized the model's cross-validation for enhanced performance.
+
+### Model Performance
+- Evaluated models using Mean Absolute Error (MAE).
+- Random Forest outperformed other models:
+  - Random Forest: MAE = 11.22
+  - Linear Regression: MAE = 18.86
+  - Ridge Regression: MAE = 19.67
